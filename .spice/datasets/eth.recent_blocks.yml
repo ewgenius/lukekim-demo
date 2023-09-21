@@ -1,6 +1,22 @@
 name: eth.recent_blocks
 type: append
-firecache:
-  enabled: true
-  trigger: number
-  time_column: timestamp
+
+access:
+  read:
+    - 'ewgenius'
+    - 'phillipleblanc'
+
+migrations:
+  - name: create_view
+    acceleration:
+      type: raw
+      columns:
+        - name: block_number
+    sql: |
+      CREATE OR REPLACE VIEW ewgenius."lukekim-demo".recent_blocks AS
+        SELECT * FROM eth.recent_blocks;
+
+# firecache:
+#   enabled: true
+#   trigger: number
+#   time_column: timestamp

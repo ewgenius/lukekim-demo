@@ -1,12 +1,12 @@
 name: eth.recent_transactions
 type: append
+
+access:
+  read:
+    - '*'
+
 migrations:
   - name: create_view
-
-    access:
-      read:
-        - '*'
-
     acceleration:
       type: raw
       columns:
